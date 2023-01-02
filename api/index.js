@@ -1,9 +1,9 @@
 import express from "express"
-import dotnv from "dotenv"
-import mongoose, { mongo } from "mongoose"
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 
 const app = express();
-dotnv.config();
+dotenv.config();
 
 const connect = async () => {
     try{
@@ -17,10 +17,6 @@ const connect = async () => {
 
 mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected");
-});
-
-mongoose.connection.on("connected", () => {
-    console.log("mongoDB connected");
 });
 
 
