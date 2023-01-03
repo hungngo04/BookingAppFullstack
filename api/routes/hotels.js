@@ -42,12 +42,12 @@ router.get("/:id", async(req, res) => {
     }
 })
 //get all
-router.get("/", async(req, res) => {
+router.get("/", async(req, res, next) => {
     try{
         const hotels = await Hotel.find();
         res.status(200).json(hotels);
     } catch(err){
-        res.status(500).json(err);
+        next(err);
     }
 })
 
