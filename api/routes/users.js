@@ -1,9 +1,13 @@
 import express from "express";
-import { createUser, deleteUser, getUser, getUsers, updateUser } from "../controllers/User.js";
+import { deleteUser, getUser, getUsers, updateUser } from "../controllers/User.js";
 import User from "../models/User.js"
+import { verifyToken } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
+router.get("/checkauthentication", verifyToken, (req, res, next) => {
+    res.send("You are logged in");
+})
 //update
 router.put("/:id", updateUser)
 //delete
